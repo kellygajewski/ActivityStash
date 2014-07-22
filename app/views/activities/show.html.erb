@@ -6,11 +6,13 @@
 	<h3><a href="<%= @activity.link %>"><%= @activity.link %></a></h3>
 
 	<h3>Categories:</h3>
-	<ul>
 	<% @activity.categories.each do |c| %>
-	<li><%=c.name%></li>
-	<%end%>
-</ul>
+		<% if c != @activity.categories.last %>
+			<%= link_to c.name, c %>,
+		<% else %>
+			<%= link_to c.name, c %>
+		<% end %>
+	<% end %>
 
 	<h3>Notes:</h3>
 	<%= @activity.notes %> <br><br>
